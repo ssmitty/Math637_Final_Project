@@ -3,7 +3,7 @@ name: python-sqlite-project
 description: Apply this project's Python, SQLite, GitHub, testing, and maintainable architecture standards when creating, editing, reviewing, or testing project code. Also use when explicitly requested by name.
 ---
 
-# Codex Agent Instructions
+# Project Engineering Standards
 
 ## Role
 
