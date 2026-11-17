@@ -57,9 +57,53 @@ Downloads. Then run:
 .venv/bin/energy-pipeline status
 ```
 
-Importing the same history again does not add duplicate readings. To collect
-newer data, follow [API collection in the README](README.md#api-collection).
+Importing the same history again does not add duplicate readings.
 You do not need to run collection while analyzing data already stored.
+
+## Optional: fetch new data with the team API key
+
+You need the key to fetch new readings from the API. You do not need it to read
+the database or export data already saved.
+
+In the project Terminal window, **run this first line by itself**:
+
+```zsh
+read -rs 'ENERGY_API_KEY?Team API key: '
+```
+
+When Terminal displays **`Team API key:`**, paste your key and press **Enter**.
+The key will not appear on screen, even as dots. This is expected.
+Do not replace any text in the command with your key, and do not paste the next
+commands until you have finished entering it.
+
+Now run:
+
+```zsh
+export ENERGY_API_KEY
+.venv/bin/energy-pipeline collect
+```
+
+`export` makes the key available to the collector in this Terminal window.
+`collect` fetches available readings and saves them, then exits. Check the result
+with `.venv/bin/energy-pipeline status`.
+
+Opening a new Terminal window requires entering the key again. If your key is
+already saved in this project's private `.env.local` file, use these commands
+instead:
+
+```zsh
+source .env.local
+.venv/bin/energy-pipeline collect
+```
+
+For continuous collection every 15 minutes, use
+`.venv/bin/energy-pipeline collect --loop`. Keep the computer awake and connected;
+press Ctrl+C to stop. Run only one collector per database.
+
+**On a server:** set `ENERGY_API_KEY` in the hosting service's secret settings or
+the environment of the service that runs the collector. A key exported on your
+laptop is not automatically available on a server. Keep the key private and out
+of GitHub and browser code.
 
 ## 4. Export the data for modeling
 
