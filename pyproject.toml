@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "math637-energy-pipeline"
+version = "0.1.0"
+description = "Local storage and historical ingestion for campus demand forecasting"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+energy-pipeline = "energy_pipeline.cli:main"
+
+[tool.setuptools]
+packages = ["energy_pipeline", "database"]
+
+[tool.setuptools.package-dir]
+energy_pipeline = "src/energy_pipeline"
+database = "database"
+
+[tool.setuptools.package-data]
+database = ["migrations/*.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
