@@ -3,6 +3,9 @@
 Local SQLite storage and historical ingestion for the five-building forecasting
 project. Python 3.12+ is required; the application uses only the standard library.
 
+For a plain-language guide to opening the database and exporting modeling data,
+see [Using the database for modeling](DATABASE_ACCESS.md).
+
 ## Local setup
 
 Run from the project directory:
